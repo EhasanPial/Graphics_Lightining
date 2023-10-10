@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\GLFW GLAD Installation Using Visual Studio 2022\opengl\glad.c">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="E:\4-2\Lab\Computer Graphics\GLFW GLAD Installation Using Visual Studio 2022\opengl\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
