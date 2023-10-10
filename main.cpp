@@ -69,21 +69,21 @@ glm::vec3 V = glm::vec3(0.0f, 1.0f, 0.0f);
 
 // positions of the point lights
 glm::vec3 pointLightPositions[] = {
-    glm::vec3(1.50f,  3.5f,  3.0f),
-    glm::vec3(-1.5f,  3.5f,  3.0f),
-    glm::vec3(-1.5f,  3.5f,  -3.0f),
-    glm::vec3(1.5f,  3.5f,  -3.0f)
+    glm::vec3(1.50f,  3.5f,  3.0f+0.05f),
+    glm::vec3(-1.5f,  3.5f,  3.0f + 0.05f),
+    glm::vec3(-1.5f,  3.5f,  -3.0f + 0.05f),
+    glm::vec3(1.5f,  3.5f,  -3.0f + 0.05f)
 };
 
 
 
 glm::vec3 lightPositions[] = {
         glm::vec3(2.25f, 3.5f, -1.7f),
-        glm::vec3(0.0f, 3.5f, 0.0f)
+        glm::vec3(0.0f, -4.5f, 0.0f)
 };
 
 glm::vec3 lightDirections[] = {
-    glm::vec3(0.0, -1.0f, 0.0f)
+    glm::vec3(0.0, 1.0f, 0.0f)
 };
 
 DirectionalLight dLight = DirectionalLight(-0.2f, -1.0f, -0.3f);
@@ -265,9 +265,10 @@ int main()
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
-    Sphere sphere = Sphere();
-    Cube cube = Cube();
-    Cube cube2 = Cube(glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f));
+
+    
+   // Cube cube = Cube();
+    //Cube cube2 = Cube(glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f));
 
 
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -624,7 +625,7 @@ int main()
         }
 
         model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(0.0, 2.0f, 0.0f));
+        model = glm::translate(model, glm::vec3(0.0, 3.5f, 0.0f));
         model = glm::scale(model, glm::vec3(0.2f));
         ourShader.setMat4("model", model);
         glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
@@ -661,189 +662,6 @@ void drawCube(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 model = g
     
     glBindVertexArray(cubeVAO);
     glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
-}
-
-void bed(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, float z = 0)
-{
-    //float baseHeight = 0.05;
-    //float width = 0.5;
-    //float length = 1.0;
-
-    ////base
-    //glm::mat4 model = glm::mat4(1.0f);
-    //glm::mat4 translate = glm::mat4(1.0f);
-    //glm::mat4 translate2 = glm::mat4(1.0f);
-    //glm::mat4 scale = glm::mat4(1.0f);
-    //scale = glm::scale(model, glm::vec3(length, baseHeight, width));
-    //translate = glm::translate(model, glm::vec3(-1.0, 0.05, -0.5 + z));
-    //model = alTogether * translate * scale;
-    //drawCube(cubeVAO, lightingShader, model, 0.545, 0.571, 0.075);
-
-
-    //// leg 1
-
-    //model = glm::mat4(1.0f);
-    //scale = glm::scale(model, glm::vec3(0.05, baseHeight, 0.05));
-    //translate = glm::translate(model, glm::vec3(-0.05, 0.0, -0.5 + z));
-    //model = alTogether * translate * scale;
-    //drawCube(cubeVAO, lightingShader, model, 0.5, 0.571, 0.075);
-
-    //// leg 2
-
-    //model = glm::mat4(1.0f);
-    //scale = glm::scale(model, glm::vec3(0.05, baseHeight, 0.05));
-    //translate = glm::translate(model, glm::vec3(-0.05, 0.0, -0.1 + z));
-    //model = alTogether * translate * scale;
-    //drawCube(cubeVAO, lightingShader, model, 0.5, 0.571, 0.075);
-
-    //// leg 3
-
-    //model = glm::mat4(1.0f);
-    //scale = glm::scale(model, glm::vec3(0.05, baseHeight, 0.05));
-    //translate = glm::translate(model, glm::vec3(-1.0, 0.0, -0.5 + z));
-    //model = alTogether * translate * scale;
-    //drawCube(cubeVAO, lightingShader, model, 0.5, 0.571, 0.075);
-
-    //// leg 4
-
-    //model = glm::mat4(1.0f);
-    //scale = glm::scale(model, glm::vec3(0.05, baseHeight, 0.05));
-    //translate = glm::translate(model, glm::vec3(-1.0, 0.0, -0.1 + z));
-    //model = alTogether * translate * scale;
-    //drawCube(cubeVAO, lightingShader, model, 0.5, 0.571, 0.075);
-
-
-
-    ////head
-
-    //glm::mat4  rotateYMatrix;
-    //model = glm::mat4(1.0f);
-    //rotateYMatrix = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-    //scale = glm::scale(model, glm::vec3(length / 2.2, baseHeight, width));
-    //translate = glm::translate(model, glm::vec3(0.06, 0.05, -0.5 + z));
-    //model = alTogether * rotateYMatrix * translate * scale;
-    //drawCube(cubeVAO, lightingShader, model, 0.0, 0.871, 0.075);
-
-    // bed er head 
-    float bx = -1.98f, by = 0.75f, bz = -1.0f;
-
-    glm::mat4 identityMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-    glm::mat4 translateMatrix, rotateXMatrix, rotateYMatrix, rotateZMatrix, scaleMatrix, model;
-    translateMatrix = glm::translate(identityMatrix, glm::vec3(translate_X, translate_Y, translate_Z));
-    translateMatrix = glm::translate(identityMatrix, glm::vec3(bx + 0, by + 0.75 / 2, bz - (2 - 0.25 / 2)));
-    scaleMatrix = glm::scale(identityMatrix, glm::vec3(scale_X * 4.0f, 1, .5));
-    model = translateMatrix * scaleMatrix;
-    drawCube(cubeVAO, lightingShader, model, 0.0, 0.871, 0.075);
-
-   
-    //bed wood
-    translateMatrix = glm::translate(identityMatrix, glm::vec3(bx, by, bz));
-    scaleMatrix = glm::scale(identityMatrix, glm::vec3(scale_X * 4.0f, scale_Y * 0.5f, scale_Z * 8.0f));
-    model = translateMatrix * scaleMatrix;
-    drawCube(cubeVAO, lightingShader, model, 0.0, 0.871, 0.075);
-
-
-
-    // balish
-
-    translateMatrix = glm::translate(identityMatrix, glm::vec3(bx, by + 0.125, bz - (2 - 0.25 / 2) + 0.5));
-    scaleMatrix = glm::scale(identityMatrix, glm::vec3(scale_X * 1.0f, scale_Y * .5f, scale_Z * 0.8));
-    model = translateMatrix * scaleMatrix;
-    drawCube(cubeVAO, lightingShader, model, 0.0, 0.871, 0.075);
-
-
-
-
-
-    //foam 
-    translateMatrix = glm::translate(identityMatrix, glm::vec3(bx, by, bz));
-    scaleMatrix = glm::scale(identityMatrix, glm::vec3(scale_X * 4.0f, scale_Y * 0.25f, scale_Z * 8.0f));
-    model = translateMatrix * scaleMatrix;
-    drawCube(cubeVAO, lightingShader, model, 0.0, 0.871, 0.075);
-
- 
-
-
-    //legs0
-    translateMatrix = glm::translate(identityMatrix, glm::vec3(bx + 1 - 0.125f, by - 0.75f / 2, bz + 2 - 0.125f));
-    scaleMatrix = glm::scale(identityMatrix, glm::vec3(0.25f, 1.5f, 0.25f));
-    model = translateMatrix * scaleMatrix;
-    drawCube(cubeVAO, lightingShader, model, 0.0, 0.871, 0.075);
-
-
-    translateMatrix = glm::translate(identityMatrix, glm::vec3(bx - (1 - 0.125f), by - 0.75f / 2, bz + 2 - 0.125f));
-    scaleMatrix = glm::scale(identityMatrix, glm::vec3(0.25f, 1.5f, 0.25f));
-    model = translateMatrix * scaleMatrix;
-    drawCube(cubeVAO, lightingShader, model, 0.0, 0.871, 0.075);
-
- 
-
-    translateMatrix = glm::translate(identityMatrix, glm::vec3(bx - (1 - 0.125f), by - 0.75f / 2, bz - (2 - 0.125f)));
-    scaleMatrix = glm::scale(identityMatrix, glm::vec3(0.25f, 1.5f, 0.25f));
-    model = translateMatrix * scaleMatrix;
-    drawCube(cubeVAO, lightingShader, model, 0.0, 0.871, 0.075);
-
-
-   
-
-    translateMatrix = glm::translate(identityMatrix, glm::vec3(bx + (1 - 0.125f), by - 0.75f / 2, bz - (2 - 0.125f)));
-    scaleMatrix = glm::scale(identityMatrix, glm::vec3(0.25f, 1.5f, 0.25f));
-    model = translateMatrix * scaleMatrix;
-    drawCube(cubeVAO, lightingShader, model, 0.0, 0.871, 0.075);
-
-
-
-
-
-
-}
-
-void beach(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether)
-{
-    float baseHeight = 0.001;
-    float width = 8.0;
-    float length = 8.5;
-
-    glm::mat4 model = glm::mat4(1.0f);
-    glm::mat4 translate = glm::mat4(1.0f);
-    glm::mat4 translate2 = glm::mat4(1.0f);
-    glm::mat4 scale = glm::mat4(1.0f);
-    scale = glm::scale(model, glm::vec3(width, baseHeight, length));
-    translate = glm::translate(model, glm::vec3(-0.2, 0, -0.5));
-    model = alTogether * scale * translate;
-    drawCube(cubeVAO, lightingShader, model, 0.545, 0.271, 0.075);
-}
-
-void building(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether)
-{
-    float baseHeight = 3.0;
-    float width = 1.8;
-    float length = 2.0;
-
-    glm::mat4 model = glm::mat4(1.0f);
-    glm::mat4 translate = glm::mat4(1.0f);
-    glm::mat4 translate2 = glm::mat4(1.0f);
-    glm::mat4 scale = glm::mat4(1.0f);
-    scale = glm::scale(model, glm::vec3(width, baseHeight, length));
-    translate = glm::translate(model, glm::vec3(2.55, 0.0, -2.0));
-    model = alTogether * scale * translate;
-    drawCube(cubeVAO, lightingShader, model, 0.545, 0.271, 0.075);
-}
-
-void road(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether)
-{
-    float baseHeight = 0.01;
-    float width = 1.0;
-    float length = 8.5;
-
-    glm::mat4 model = glm::mat4(1.0f);
-    glm::mat4 translate = glm::mat4(1.0f);
-    glm::mat4 translate2 = glm::mat4(1.0f);
-    glm::mat4 scale = glm::mat4(1.0f);
-    scale = glm::scale(model, glm::vec3(width, baseHeight, length));
-    translate = glm::translate(model, glm::vec3(3.5, 0.0, -0.5));
-    model = alTogether * scale * translate;
-    drawCube(cubeVAO, lightingShader, model, 0.0, 0.0, 0.0);
 }
 
 

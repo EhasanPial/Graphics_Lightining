@@ -147,7 +147,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="fragmentShader.fs" />
-    <None Include="fragmentShaderForPhongShading.fs" />
     <None Include="fragmentShaderForPhongShadingTest.fs" />
     <None Include="vertexShader.vs" />
     <None Include="vertexShaderForPhongShading.vs" />
