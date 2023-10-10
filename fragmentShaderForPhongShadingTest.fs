@@ -69,6 +69,7 @@ vec3 CalcDirLight(DirectionalLight light, vec3 normal, vec3 viewDir);
 
 vec3 CalcSpotLight(Material material, SpotLight light, vec3 normal, vec3 fragPos);
 
+vec3 emissive = vec3(.001f,.001f,.001f) ;
 
 
 void main()
@@ -88,7 +89,7 @@ void main()
     result += CalcDirLight(directionalLight,N, V);
 
     result += CalcSpotLight(material,spotLight,N,FragPos);
-     
+    result +=  emissive ; 
     FragColor = vec4(result, 1.0);
 }
 

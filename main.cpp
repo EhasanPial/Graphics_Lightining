@@ -751,6 +751,8 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
             pointlight4.turnOn();
             pointLightOn = !pointLightOn;
         }
+
+        
     }
    
     if (key == GLFW_KEY_2 && action == GLFW_PRESS)
